@@ -1,0 +1,46 @@
+body{
+    background-color: lightpink;
+}
+.btns{
+    margin-top: 10px;
+    margin-left: 400px;
+    margin-bottom: 400px;
+    
+    
+}
+
+.button{
+   width: 100px;
+   height: 100px;
+   border-radius: 16.5px;
+   display: inline-block;
+   background-color: darkblue;
+   opacity: 0.20;
+
+
+}
+
+.button2{
+    background-color: white;
+    color: white;
+}
+
+.button3{
+    background-color: white ;
+    margin-left: 50px;
+    margin-bottom: 0px ;
+    width: 300px ;
+    color: black ;
+    border-radius: 16.5px;
+    height: 30px ;
+    font-size: large;
+}
+
+.button3:hover{
+    background-color: lightpink ;
+}
+
+.lc{
+    margin-left: 30px ;
+    margin-bottom: -30px;
+}

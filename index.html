@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Task 1</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <script src="index.js">
+        var y;
+        var counter = 0;
+        var count = 0;
+        var level = 1;
+        const sequence = [];
+        var result = [];
+        let b;
+
+        // start the game
+        function startGame() {
+            findNo();
+            playRound(sequence);
+        }
+
+        // to select a random number and the add that 
+        function findNo() {
+            let x = Math.floor((Math.random() * 16) + 1);
+            console.log(x);
+            y = x;
+            sequence.push(y);
+        }
+
+
+        //to change the colour of the respective element , input 
+        function colorChange(b) {
+            let colorButton = document.getElementById(b);
+            colorButton.style.background = "white";
+            setTimeout(() => { colorButton.style.background = "darkblue" }, 500);
+        }
+
+        // to check the click by the user and note if true or not 
+        function colorCheck(a) {
+            result.push(a);
+            count += 1;
+            if (count == level) {
+                nextRound()
+            }
+        }
+
+        //to play any round , take the sequence as input and blinks for each respective element 
+        function playRound(newsequence) {
+            newsequence.forEach((element, index) => {
+                setTimeout(() => {
+                    colorChange(element);
+                }, (index + 1) *700);
+            });
+            document.getElementById("level").innerHTML = level-1 ;
+            document.getElementById("counter").innerHTML = counter ;
+        }
+
+        //to go to next round
+        function nextRound() {
+            if (result.every((val, index) => val === sequence[index])) {
+                counter += 1;
+                console.log("level:" + level + ", counter" + counter + " next round")
+                level += 1;
+                findNo();
+                playRound(sequence);
+                count = 0;
+                result = [];
+            }
+            else {
+                window.alert("Game Over. Score : " + counter);
+            }
+        }
+
+
+    </script>
+    <div class="btns">
+        <button class="button3 " onclick={startGame()}>Start game</button>
+        <br>
+        <div class="lc" >
+        <h2>Level :<a id="level"> </a></h2>
+        <h2>Score :<a id="counter"> </a></h2>
+        </div>
+        <br>
+        <button class="button " id="1" onclick={colorCheck(1)}></button>
+        <button class="button " id="2" onclick={colorCheck(2)}></button>
+        <button class="button " id="3" onclick={colorCheck(3)}></button>
+        <button class="button " id="4" onclick={colorCheck(4)}></button>
+        <br>
+        <button class="button " id="5" onclick={colorCheck(5)}></button>
+        <button class="button " id="6" onclick={colorCheck(6)}></button>
+        <button class="button " id="7" onclick={colorCheck(7)}></button>
+        <button class="button " id="8" onclick={colorCheck(8)}></button>
+        <br>
+        <button class="button " id="9" onclick={colorCheck(9)}></button>
+        <button class="button " id="10" onclick={colorCheck(10)}></button>
+        <button class="button " id="11" onclick={colorCheck(11)}></button>
+        <button class="button " id="12" onclick={colorCheck(12)}></button>
+        <br>
+        <button class="button " id="13" onclick={colorCheck(13)}></button>
+        <button class="button " id="14" onclick={colorCheck(14)}></button>
+        <button class="button " id="15" onclick={colorCheck(15)}></button>
+        <button class="button " id="16" onclick={colorCheck(16)}></button>
+        <br>
+
+    </div>
+</body>
+
+</html>
